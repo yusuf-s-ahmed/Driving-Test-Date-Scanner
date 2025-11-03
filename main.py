@@ -16,7 +16,7 @@ pattern = re.compile(
 )
 
 matches = pattern.findall(html)
-target_centres = ["Erith", "Sidcup", "Bromley", "Belvedere", "Herne", "Loughton"]
+target_centres = ["Erith", "Sidcup", "Bromley", "Belvedere"]
 
 # Email settings
 
