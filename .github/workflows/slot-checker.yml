@@ -2,7 +2,7 @@ name: Driving Test Slot Checker
 
 on:
   schedule:
-    - cron: "*/10 * * * *"  # every 10 min
+    - cron: "*/5 * * * *"  # every 10 minutes
   workflow_dispatch:
 
 jobs:
@@ -10,20 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repo
       uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10
+        python-version: '3.10'
 
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Run slot checker
+    - name: Run script
       env:
         EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         TO_EMAILS: ${{ secrets.TO_EMAILS }}
+
       run: python main.py
